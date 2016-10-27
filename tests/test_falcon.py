@@ -1,5 +1,7 @@
 from __future__ import absolute_import, division, print_function
 
+import json
+
 import crochet
 
 from falcon import testing
@@ -13,4 +15,9 @@ class APITest(testing.TestCase):
 
     def test_endpoint_works(self):
         result = self.simulate_get('/threaded')
-        self.assertGreater(0, len(result.content))
+        print(result.json)
+
+        serialized = json.loads(result)
+        keys = serialized.keys()
+        expected = ['statuses', 'alarm-state', 'last-update']
+        self.assertEqual(expected, keys)
