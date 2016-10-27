@@ -13,7 +13,7 @@ from twisted.internet.threads import deferToThread
 
 # twisted
 def blocking_request():
-    print('called')
+    print('look at me, I\'ve been called')
     resp = requests.get('https://firedamp.herokuapp.com/')
     return resp.json()
 
